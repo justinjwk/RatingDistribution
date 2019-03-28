@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="RatingDistribution">
+    <output-path>$PROJECT_DIR$/out/artifacts/RatingDistribution</output-path>
+    <root id="archive" name="RatingDistribution.jar">
+      <element id="module-output" name="RatingDistribution" />
+    </root>
+  </artifact>
+</component>
