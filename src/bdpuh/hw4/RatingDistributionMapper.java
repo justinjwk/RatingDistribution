@@ -23,13 +23,11 @@ public class RatingDistributionMapper extends Mapper<LongWritable, Text, Text, I
         System.err.println ("in stderr"+ context.getTaskAttemptID().toString());
     }
 
-
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
         String line = value.toString();
         String[] values = line.split("\t");
         rating.set(values[2]);
         context.write(rating, one);
-
     }
 }

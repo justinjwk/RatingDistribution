@@ -36,7 +36,6 @@ public class RatingDistribution {
             return;
         }
 
-
         // Specify the Input path
         try {
             FileInputFormat.addInputPath(ratingDistributionJob, new Path(inputPath));
@@ -65,9 +64,7 @@ public class RatingDistribution {
         ratingDistributionJob.setOutputKeyClass(Text.class);
         ratingDistributionJob.setOutputValueClass(IntWritable.class);
 
-
         ratingDistributionJob.setNumReduceTasks(5);
-
 
         try {
             ratingDistributionJob.waitForCompletion(true);
@@ -78,9 +75,5 @@ public class RatingDistribution {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(RatingDistribution.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-
-
     }
-
 }
