@@ -1,20 +1,18 @@
 package bdpuh.hw4;
 
 import java.io.IOException;
-import java.util.StringTokenizer;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.lib.input.FileSplit;
 import org.apache.log4j.Logger;
-import org.apache.log4j.Priority;
 
 public class RatingDistributionMapper extends Mapper<LongWritable, Text, Text, IntWritable>{
 
     Logger logger = Logger.getLogger(RatingDistributionMapper.class);
     IntWritable one = new IntWritable(1);
-    Text word = new Text();
+    Text rating = new Text();
 
     @Override
     protected void setup(Context context) throws IOException, InterruptedException {
@@ -29,13 +27,9 @@ public class RatingDistributionMapper extends Mapper<LongWritable, Text, Text, I
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
         String line = value.toString();
-        System.out.println("look == " + line);
-        line = line.replaceAll("[,.;?\"!\\/]", "");
-        StringTokenizer tokenizer = new StringTokenizer(line);
-        while (tokenizer.hasMoreTokens()) {
-            word.set(tokenizer.nextToken());
-            context.write(word, one);
-        }
+        String[] values = line.split("\t");
+        rating.set(values[2]);
+        context.write(rating, one);
 
     }
 }

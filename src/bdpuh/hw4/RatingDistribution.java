@@ -16,11 +16,11 @@ import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 public class RatingDistribution {
     public static void main(String args[])  {
 
-//        String inputPath = args[0];
-//        String outputPath = args[1];
+        String inputPath = args[0];
+        String outputPath = args[1];
 
-        String inputPath = "/movie-ratings";
-        String outputPath = "/movie-rating-distribution";
+//        String inputPath = "/movie-ratings";
+//        String outputPath = "/movie-rating-distribution";
 
         Job ratingDistributionJob = null;
 
@@ -66,7 +66,7 @@ public class RatingDistribution {
         ratingDistributionJob.setOutputValueClass(IntWritable.class);
 
 
-        //ratingDistributionJob.setNumReduceTasks(3);
+        ratingDistributionJob.setNumReduceTasks(5);
 
 
         try {
