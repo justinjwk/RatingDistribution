@@ -64,7 +64,7 @@ public class RatingDistribution {
         ratingDistributionJob.setOutputKeyClass(Text.class);
         ratingDistributionJob.setOutputValueClass(IntWritable.class);
 
-        ratingDistributionJob.setNumReduceTasks(5);
+        // ratingDistributionJob.setNumReduceTasks(5);
 
         try {
             ratingDistributionJob.waitForCompletion(true);
